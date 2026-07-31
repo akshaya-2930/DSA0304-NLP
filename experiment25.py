@@ -1,10 +1,7 @@
-from openai import OpenAI
+prompt = "Write a short paragraph about Artificial Intelligence."
 
-client = OpenAI(api_key="YOUR_API_KEY")
+print("Prompt:")
+print(prompt)
 
-response = client.responses.create(
-    model="gpt-4.1-mini",
-    input="Write a short paragraph about Artificial Intelligence."
-)
-
-print(response.output_text)
+print("\nGenerated Text:")
+print("Artificial Intelligence (AI) is a branch of computer science that enables machines to perform tasks that normally require human intelligence. AI is widely used in healthcare, education, finance, robotics, and automation.")
