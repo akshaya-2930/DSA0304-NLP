@@ -1,0 +1,40 @@
+from nltk.stem import PorterStemmer
+from tabulate import tabulate
+
+ps = PorterStemmer()
+
+words = ["relational", "relation", "relate"]
+
+results = []
+
+for word in words:
+
+    if word.endswith("ational"):
+        rule = "Remove 'ational'"
+        intermediate = word.replace("ational", "ate")
+    elif word.endswith("ation"):
+        rule = "Remove 'ation'"
+        intermediate = word.replace("ation", "ate")
+    else:
+        rule = "Porter Stemming"
+        intermediate = word
+
+    stem = ps.stem(word)
+
+    results.append([
+        word,
+        rule,
+        intermediate,
+        stem
+    ])
+
+print(tabulate(
+    results,
+    headers=[
+        "Original Word",
+        "Applied Rule",
+        "Intermediate Form",
+        "Final Stem"
+    ],
+    tablefmt="grid"
+))
