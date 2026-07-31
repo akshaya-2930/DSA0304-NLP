@@ -1,0 +1,54 @@
+from tabulate import tabulate
+
+words = ["unhappy", "happiness", "happily"]
+
+results = []
+
+for word in words:
+    prefix = "-"
+    suffix = "-"
+    base = word
+    transformation = "None"
+
+    if word.startswith("un"):
+        prefix = "un"
+        base = word[2:]
+        transformation = "Derivational"
+
+    elif word.endswith("ness"):
+        suffix = "ness"
+        base = word[:-4]
+        if base.endswith("i"):
+            base = base[:-1] + "y"
+        transformation = "Derivational"
+
+    elif word.endswith("ly"):
+        suffix = "ly"
+        base = word[:-2]
+        if base.endswith("i"):
+            base = base[:-1] + "y"
+        transformation = "Derivational"
+
+    normalized = base
+
+    results.append([
+        word,
+        prefix,
+        suffix,
+        base,
+        transformation,
+        normalized
+    ])
+
+print(tabulate(
+    results,
+    headers=[
+        "Word",
+        "Prefix",
+        "Suffix",
+        "Base Form",
+        "Transformation",
+        "Normalized Root"
+    ],
+    tablefmt="grid"
+))
