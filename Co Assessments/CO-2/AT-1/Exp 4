@@ -1,0 +1,12 @@
+words = ["writes", "writing", "written"]
+
+for word in words:
+
+    if word == "writes":
+        print(word, "write", "+s", "Regular")
+
+    elif word == "writing":
+        print(word, "write", "+ing", "Regular")
+
+    elif word == "written":
+        print(word, "write", "+en", "Irregular")
