@@ -1,0 +1,8 @@
+from nltk.stem import PorterStemmer
+
+ps = PorterStemmer()
+
+words = ["relational", "relation", "relate"]
+
+for word in words:
+    print(word, "->", ps.stem(word))
