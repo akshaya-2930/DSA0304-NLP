@@ -1,0 +1,23 @@
+words = ["unhappy", "happiness", "happily"]
+
+for word in words:
+
+    if word.startswith("un"):
+        prefix = "un"
+        root = "happy"
+        suffix = "-"
+        t = "Derivational"
+
+    elif word.endswith("ness"):
+        prefix = "-"
+        root = "happy"
+        suffix = "ness"
+        t = "Derivational"
+
+    elif word.endswith("ly"):
+        prefix = "-"
+        root = "happy"
+        suffix = "ly"
+        t = "Derivational"
+
+    print(word, prefix, root, suffix, t)
