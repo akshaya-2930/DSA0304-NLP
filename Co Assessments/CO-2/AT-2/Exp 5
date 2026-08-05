@@ -1,0 +1,43 @@
+from tabulate import tabulate
+
+words = ["create", "creates", "creating"]
+
+results = []
+
+for word in words:
+
+    root = "create"
+    suffix = "-"
+    category = "Base Form"
+
+    if word == "creates":
+        suffix = "s"
+        category = "Third Person Singular"
+
+    elif word == "creating":
+        suffix = "ing"
+        category = "Present Participle"
+
+    normalized = "create"
+
+    results.append([
+        word,
+        suffix,
+        category,
+        root,
+        normalized,
+        normalized
+    ])
+
+print(tabulate(
+    results,
+    headers=[
+        "Original Word",
+        "Suffix",
+        "Grammatical Category",
+        "Root",
+        "Normalized Form",
+        "Final Output"
+    ],
+    tablefmt="grid"
+))
