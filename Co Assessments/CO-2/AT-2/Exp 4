@@ -1,0 +1,49 @@
+from tabulate import tabulate
+
+words = ["activate", "activation", "reactivation"]
+
+results = []
+
+for word in words:
+
+    prefix = "-"
+    root = "activate"
+    suffix = "-"
+    sequence = "Base Word"
+
+    if word == "activation":
+        suffix = "ion"
+        sequence = "activate → activation"
+
+    elif word == "reactivation":
+        prefix = "re"
+        suffix = "ion"
+        sequence = "activate → activation → reactivation"
+
+    normalized = "activate"
+
+    parsed = prefix + " + " + root + " + " + suffix
+
+    results.append([
+        word,
+        prefix,
+        root,
+        suffix,
+        sequence,
+        normalized,
+        parsed
+    ])
+
+print(tabulate(
+    results,
+    headers=[
+        "Original Word",
+        "Prefix",
+        "Root",
+        "Suffix",
+        "Derivational Sequence",
+        "Normalized Form",
+        "Parsed Representation"
+    ],
+    tablefmt="grid"
+))
