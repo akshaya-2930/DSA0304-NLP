@@ -1,0 +1,55 @@
+from tabulate import tabulate
+
+words = ["analyzing", "analysis", "analytical"]
+
+results = []
+
+for word in words:
+
+    prefix = "-"
+    suffix = "-"
+    root = ""
+    transformation = ""
+
+    if word.endswith("ing"):
+        root = "analyze"
+        suffix = "ing"
+        transformation = "Inflectional"
+
+    elif word.endswith("sis"):
+        root = "analyze"
+        suffix = "sis"
+        transformation = "Derivational"
+
+    elif word.endswith("ical"):
+        root = "analyze"
+        suffix = "ical"
+        transformation = "Derivational"
+
+    else:
+        root = word
+        transformation = "None"
+
+    normalized = "analyze"
+
+    results.append([
+        word,
+        root,
+        prefix,
+        suffix,
+        transformation,
+        normalized
+    ])
+
+print(tabulate(
+    results,
+    headers=[
+        "Original Word",
+        "Root",
+        "Prefix",
+        "Suffix",
+        "Transformation",
+        "Normalized Output"
+    ],
+    tablefmt="grid"
+))
