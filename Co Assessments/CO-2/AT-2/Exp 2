@@ -1,0 +1,51 @@
+from tabulate import tabulate
+
+words = ["disagree", "agreement", "agreeable"]
+
+results = []
+
+for word in words:
+
+    prefix = "-"
+    suffix = "-"
+    root = "agree"
+    transformation = "Derivational"
+    meaning = ""
+
+    if word.startswith("dis"):
+        prefix = "dis"
+        meaning = "Opposite of agree"
+
+    elif word.endswith("ment"):
+        suffix = "ment"
+        meaning = "State or result of agreeing"
+
+    elif word.endswith("able"):
+        suffix = "able"
+        meaning = "Capable of being agreed"
+
+    normalized = "agree"
+
+    results.append([
+        word,
+        prefix,
+        root,
+        suffix,
+        transformation,
+        meaning,
+        normalized
+    ])
+
+print(tabulate(
+    results,
+    headers=[
+        "Original Word",
+        "Prefix",
+        "Root",
+        "Suffix",
+        "Transformation",
+        "Semantic Meaning",
+        "Normalized Form"
+    ],
+    tablefmt="grid"
+))
