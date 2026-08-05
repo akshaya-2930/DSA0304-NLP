@@ -1,0 +1,43 @@
+from tabulate import tabulate
+
+words = ["govern", "government", "governance"]
+
+results = []
+
+for word in words:
+
+    root = "govern"
+    affix = "-"
+    hierarchy = "Base Word"
+
+    if word == "government":
+        affix = "ment"
+        hierarchy = "Level 1 Derivation"
+
+    elif word == "governance":
+        affix = "ance"
+        hierarchy = "Level 1 Derivation"
+
+    normalized = "govern"
+
+    results.append([
+        word,
+        root,
+        affix,
+        hierarchy,
+        normalized,
+        normalized
+    ])
+
+print(tabulate(
+    results,
+    headers=[
+        "Original Word",
+        "Root",
+        "Affix",
+        "Derivational Hierarchy",
+        "Normalized Form",
+        "Final Output"
+    ],
+    tablefmt="grid"
+))
