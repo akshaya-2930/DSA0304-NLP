@@ -1,0 +1,41 @@
+from collections import Counter
+import math
+
+train = "the student is learning python the student is reading books"
+test = "the student is learning python"
+
+words = train.split()
+test_words = test.split()
+
+unigram = Counter(words)
+bigram = Counter(zip(words, words[1:]))
+
+total = len(words)
+
+# Unigram Entropy
+h1 = 0
+
+for count in unigram.values():
+    p = count / total
+    h1 -= p * math.log2(p)
+
+# Bigram Entropy
+h2 = 0
+
+for w1, w2 in zip(test_words, test_words[1:]):
+    count = bigram[(w1, w2)]
+
+    if count > 0:
+        p = count / unigram[w1]
+        h2 -= (1 / (len(test_words) - 1)) * math.log2(p)
+
+print("Test Sentence:", test)
+print("\nUnigram Entropy:", round(h1, 3))
+print("Bigram Entropy:", round(h2, 3))
+
+if h2 < h1:
+    print("\nBigram has lower uncertainty.")
+else:
+    print("\nUnigram has lower uncertainty.")
+
+print("Lower entropy means better predictability.")
