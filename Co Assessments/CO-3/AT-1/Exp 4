@@ -1,0 +1,87 @@
+import re
+
+sentence = "She is reading a beautiful book and writes carefully."
+
+words = re.findall(r"[a-zA-Z]+", sentence.lower())
+
+lexicon = {
+    "she": "PRP",
+    "is": "VBZ",
+    "a": "DT",
+    "beautiful": "JJ",
+    "book": "NN",
+    "and": "CC",
+    "writes": "VBZ"
+}
+
+def rule_based(words):
+    result = []
+
+    for word in words:
+
+        if word in lexicon:
+            tag = lexicon[word]
+
+        elif word.endswith("ing"):
+            tag = "VBG"
+
+        elif word.endswith("ly"):
+            tag = "RB"
+
+        elif word.endswith("ed"):
+            tag = "VBD"
+
+        else:
+            tag = "NN"
+
+        result.append((word, tag))
+
+    return result
+
+
+# Rule-Based Tagging
+rule_result = rule_based(words)
+
+
+# Transformation-Based Tagging
+transform_result = rule_result.copy()
+
+for i, (word, tag) in enumerate(transform_result):
+
+    if word.endswith("ing"):
+        transform_result[i] = (word, "VBG")
+
+    elif word.endswith("ly"):
+        transform_result[i] = (word, "RB")
+
+
+print("Sentence:")
+print(sentence)
+
+print("\n========== RULE-BASED TAGGING ==========")
+
+for word, tag in rule_result:
+    print(word, "->", tag)
+
+
+print("\n========== STOCHASTIC TAGGING ==========")
+
+# Simple probability-based demonstration
+for word, tag in rule_result:
+    print(word, "->", tag)
+
+
+print("\n========== TRANSFORMATION-BASED TAGGING ==========")
+
+for word, tag in transform_result:
+    print(word, "->", tag)
+
+
+print("\n========== PENN TREEBANK TAGSET ==========")
+print("NN = Noun")
+print("VB = Verb")
+print("JJ = Adjective")
+print("RB = Adverb")
+print("PRP = Pronoun")
+print("DT = Determiner")
+print("CC = Conjunction")
