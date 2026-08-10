@@ -1,0 +1,36 @@
+from collections import Counter
+import re
+
+text = """
+The student is reading.
+The student is learning Python.
+The student is studying NLP.
+The teacher is teaching the student.
+"""
+
+sentences = re.findall(r"[a-zA-Z]+", text.lower())
+
+unigram = Counter(sentences)
+bigram = Counter(zip(sentences, sentences[1:]))
+trigram = Counter(zip(sentences, sentences[1:], sentences[2:]))
+
+print("Unigram:", unigram)
+print("\nBigram:", bigram)
+print("\nTrigram:", trigram)
+
+word = input("\nEnter last word: ").lower()
+
+predictions = []
+
+for (w1, w2), count in bigram.items():
+    if w1 == word:
+        predictions.append((w2, count / unigram[w1]))
+
+predictions.sort(key=lambda x: x[1], reverse=True)
+
+print("\nTop Predictions:")
+for w, p in predictions[:5]:
+    print(w, "->", round(p, 3))
+
+print("\nUnseen Bigram Probability:",
+      bigram[("student", "football")] / unigram["student"])
