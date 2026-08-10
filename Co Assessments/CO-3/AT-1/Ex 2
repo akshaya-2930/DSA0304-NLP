@@ -1,0 +1,119 @@
+from collections import Counter
+import re
+
+corpus = """
+The student is reading a book.
+The student is studying natural language processing.
+The student is learning Python.
+The student is writing a program.
+The teacher is teaching the students.
+The teacher is explaining the topic.
+The student is attending the class.
+The students are learning English.
+The student is solving a problem.
+"""
+
+def tokenize(text):
+    return re.findall(r"\b[a-zA-Z]+\b", text.lower())
+
+sentences = [
+    tokenize(s)
+    for s in re.split(r"[.!?]", corpus)
+    if s.strip()
+]
+
+unigram = Counter()
+bigram = Counter()
+trigram = Counter()
+
+for words in sentences:
+    words = ["<s>"] + words + ["</s>"]
+
+    unigram.update(words)
+
+    for i in range(len(words) - 1):
+        bigram[(words[i], words[i + 1])] += 1
+
+    for i in range(len(words) - 2):
+        trigram[(words[i], words[i + 1], words[i + 2])] += 1
+
+total = sum(unigram.values())
+
+def uni_prob(w):
+    return unigram[w] / total
+
+def bi_prob(w1, w2):
+    return bigram[(w1, w2)] / unigram[w1] if unigram[w1] else 0
+
+def tri_prob(w1, w2, w3):
+    return trigram[(w1, w2, w3)] / bigram[(w1, w2)] if bigram[(w1, w2)] else 0
+
+def backoff(w1, w2, w3):
+    p = tri_prob(w1, w2, w3)
+
+    if p > 0:
+        return p, "Trigram"
+
+    p = bi_prob(w2, w3)
+
+    if p > 0:
+        return p, "Bigram"
+
+    return uni_prob(w3), "Unigram"
+
+# Fixed sentence - NO INPUT
+query = "the student is"
+words = tokenize(query)
+
+w1 = words[-2]
+w2 = words[-1]
+
+results = []
+
+for word in unigram:
+
+    unsmoothed = tri_prob(w1, w2, word)
+    backoff_prob, method = backoff(w1, w2, word)
+
+    interpolation = (
+        0.2 * uni_prob(word)
+        + 0.3 * bi_prob(w2, word)
+        + 0.5 * unsmoothed
+    )
+
+    results.append(
+        (word, unsmoothed, backoff_prob, method, interpolation)
+    )
+
+# Sort results
+unsmoothed = sorted(
+    [x for x in results if x[1] > 0],
+    key=lambda x: x[1],
+    reverse=True
+)
+
+backoff_results = sorted(
+    [x for x in results if x[2] > 0],
+    key=lambda x: x[2],
+    reverse=True
+)
+
+interpolation = sorted(
+    results,
+    key=lambda x: x[4],
+    reverse=True
+)
+
+print("Input Sentence:", query)
+
+print("\n========== UNSMOOTHED ==========")
+for x in unsmoothed[:5]:
+    print(x[0], "->", round(x[1], 4))
+
+print("\n========== BACKOFF ==========")
+for x in backoff_results[:5]:
+    print(x[0], "->", round(x[2], 4), "(" + x[3] + ")")
+
+print("\n========== DELETED INTERPOLATION ==========")
+for x in interpolation[:5]:
+    print(x[0], "->", round(x[4], 4))
