@@ -1,0 +1,17 @@
+from nltk.stem import PorterStemmer
+
+ps = PorterStemmer()
+
+words = [
+    "organization",
+    "organizer",
+    "organizing",
+    "organized",
+    "organization's"
+]
+
+for word in words:
+    print(word, "->", ps.stem(word))
+
+print("\nPorter stemming may lose semantic differences.")
+print("Lemmatization can preserve word meaning better.")
