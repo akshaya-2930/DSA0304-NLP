@@ -1,0 +1,45 @@
+words = [
+    "happiest",
+    "unbelievable",
+    "running",
+    "reordering",
+    "smartphones",
+    "unreadable"
+]
+
+def parse(word):
+
+    prefix = ""
+    suffix = ""
+    root = word
+
+    if word.startswith("un"):
+        prefix = "un"
+        root = root[2:]
+
+    elif word.startswith("re"):
+        prefix = "re"
+        root = root[2:]
+
+    if root.endswith("est"):
+        suffix = "est"
+        root = root[:-3]
+
+    elif root.endswith("ing"):
+        suffix = "ing"
+        root = root[:-3]
+
+    elif root.endswith("s"):
+        suffix = "s"
+        root = root[:-1]
+
+    elif root.endswith("able"):
+        suffix = "able"
+        root = root[:-4]
+
+    return root, prefix, suffix
+
+
+for word in words:
+    root, prefix, suffix = parse(word)
+    print(word, "->", prefix, "+", root, "+", suffix)
