@@ -1,0 +1,18 @@
+from nltk.stem import PorterStemmer
+import pandas as pd
+import re
+
+ps = PorterStemmer()
+
+data = pd.read_csv("BBCNews.csv")
+
+def stem_text(text):
+    words = re.findall(r"\b[a-zA-Z]+\b", str(text).lower())
+    return " ".join(ps.stem(w) for w in words)
+
+data["Processed"] = data["Text"].apply(stem_text)
+
+for i in range(5):
+    print("Original:", data["Text"].iloc[i][:100])
+    print("Stemmed :", data["Processed"].iloc[i][:100])
+    print()
