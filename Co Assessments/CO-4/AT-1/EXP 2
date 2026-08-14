@@ -1,0 +1,27 @@
+machines = {
+    "M1": "Active",
+    "M2": "Active",
+    "M3": "Maintenance",
+    "M4": "Active"
+}
+
+print("FIRST-ORDER PREDICATE CALCULUS")
+print("------------------------------")
+
+for machine, status in machines.items():
+
+    if status == "Active":
+        print("Active(" + machine + ")")
+        print("Producing(" + machine + ")")
+
+    else:
+        print("Maintenance(" + machine + ")")
+        print("Not Producing(" + machine + ")")
+
+print("\nAvailable Products:")
+print("Product availability cannot be determined")
+print("because no Produces(x,y) relation is provided.")
+
+print("\nGear Production:")
+print("Maintenance(M3) -> Not Producing(M3)")
+print("Therefore, M3 is not producing.")
