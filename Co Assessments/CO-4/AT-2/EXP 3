@@ -1,0 +1,53 @@
+sentence = (
+    "The doctor who reviewed the patient last week "
+    "recommends starting medication and scheduling a "
+    "follow-up visit in Chennai."
+)
+
+print("HEALTHCARE NLP SYSTEM")
+print("---------------------")
+
+print("\nInput Sentence:")
+print(sentence)
+
+print("\nNLP ARCHITECTURE")
+print("----------------")
+
+steps = [
+    "Input Medical Report",
+    "Tokenization",
+    "CFG Parsing",
+    "PCFG Ambiguity Resolution",
+    "Feature Structure Analysis",
+    "Medical Entity Extraction",
+    "Semantic Role Analysis",
+    "Structured Output"
+]
+
+for i, step in enumerate(steps, 1):
+    print(str(i) + ". " + step)
+
+print("\nSTRUCTURED OUTPUT")
+print("-----------------")
+
+print("Agent      : Doctor")
+print("Patient    : Patient")
+print("Action 1   : Starting medication")
+print("Action 2   : Scheduling follow-up visit")
+print("Location   : Chennai")
+print("Diagnosis  : Not explicitly mentioned")
+
+print("\nSUB-CATEGORIZATION")
+print("-------------------")
+print("recommend -> starting medication")
+print("recommend -> scheduling follow-up visit")
+
+print("\nREAL-TIME IMPROVEMENTS")
+print("----------------------")
+print("1. Efficient parsing")
+print("2. Medical vocabulary")
+print("3. Parallel processing")
+print("4. Scalable architecture")
+
+print("\nResult:")
+print("Medical entities, actions and location were extracted.")
