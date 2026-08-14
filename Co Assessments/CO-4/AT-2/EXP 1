@@ -1,0 +1,43 @@
+import nltk
+from nltk import CFG
+from nltk.parse import ChartParser
+
+grammar = CFG.fromstring("""
+S -> VP
+VP -> V NP PP
+VP -> V NP
+NP -> Det N
+NP -> NP PP
+PP -> P NP
+V -> 'show'
+Det -> 'the'
+N -> 'transactions' | 'card' | 'month'
+P -> 'with' | 'from'
+""")
+
+sentence = "show the transactions with the card from last month"
+words = sentence.split()
+
+parser = ChartParser(grammar)
+
+print("BANKING CHATBOT - CFG PARSING")
+print("--------------------------------")
+print("Sentence:", sentence)
+print("\nPossible Parse Structures:\n")
+
+count = 0
+
+for tree in parser.parse(words):
+    count += 1
+    print("Parse", count)
+    print(tree)
+    print()
+
+if count > 1:
+    print("Result: Ambiguity detected.")
+else:
+    print("Result: Single parse structure detected.")
+
+print("\nImprovement:")
+print("PCFG can rank possible parses using probabilities.")
+print("Earley parsing can handle ambiguity efficiently.")
