@@ -1,0 +1,18 @@
+queries = {
+    "Apple accessories": "Technology Brand",
+    "Mouse wireless": "Computer Device",
+    "Java tutorial": "Programming Language",
+    "Python course": "Programming Language"
+}
+
+print("WORD SENSE DISAMBIGUATION")
+print("-------------------------")
+
+for query, sense in queries.items():
+    print(query, "->", sense)
+
+print("\nSemantic cues:")
+print("Apple  -> accessories, iPhone Charger")
+print("Mouse  -> wireless, Bluetooth Mouse")
+print("Java   -> tutorial, Coding Lessons")
+print("Python -> course, Software Development Training")
