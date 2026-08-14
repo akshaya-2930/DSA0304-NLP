@@ -1,0 +1,26 @@
+print("TRANSITION-BASED vs GRAPH-BASED PARSING")
+print("----------------------------------------")
+
+sentence = "The student reads a book."
+
+print("Sentence:", sentence)
+
+print("\nTransition-Based Parsing:")
+print("1. Builds the dependency tree step by step.")
+print("2. Uses actions such as SHIFT and REDUCE.")
+print("3. Usually faster.")
+print("4. Suitable for large-scale processing.")
+
+print("\nGraph-Based Parsing:")
+print("1. Considers possible dependency trees.")
+print("2. Scores complete structures.")
+print("3. Can provide globally better decisions.")
+print("4. Usually requires more computation.")
+
+print("\nComparison:")
+print("Transition-Based -> Fast and efficient.")
+print("Graph-Based      -> More global and accurate.")
+
+print("\nConclusion:")
+print("Transition-based parsing is more suitable for")
+print("large-scale applications where speed is important.")
