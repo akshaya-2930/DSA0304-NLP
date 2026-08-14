@@ -1,0 +1,30 @@
+print("FEATURE STRUCTURES vs SUBCATEGORIZATION")
+print("-----------------------------------------")
+
+sentence = "The student gives the teacher a book."
+
+print("Sentence:", sentence)
+
+print("\nFeature Structure:")
+print("Subject:")
+print("  Person = Third")
+print("  Number = Singular")
+print("Verb:")
+print("  Tense = Present")
+print("  Number = Singular")
+
+print("\nSubcategorization Frame:")
+print("give -> Subject + Verb + Recipient + Object")
+print("give -> NP + V + NP + NP")
+
+print("\nComparison:")
+print("Feature Structures enforce grammatical features")
+print("such as number, person and agreement.")
+
+print("Subcategorization Frames describe the arguments")
+print("that a verb expects.")
+
+print("\nConclusion:")
+print("Feature Structures provide better support for")
+print("enforcing grammatical correctness.")
+print("Subcategorization is useful for verb argument structure.")
