@@ -1,0 +1,32 @@
+print("AMBIGUITY HANDLING IN NLP")
+print("-------------------------")
+
+sentence = "She saw the man with a telescope."
+
+print("Sentence:", sentence)
+
+print("\nPossible Interpretations:")
+print("1. She used a telescope to see the man.")
+print("2. The man had a telescope.")
+
+print("\nCFG:")
+print("Generates multiple valid parse structures.")
+print("Does not rank them using probabilities.")
+
+print("\nPCFG:")
+print("Assigns probabilities to grammar rules.")
+print("Can select the most probable parse.")
+
+print("\nNeural Parsing:")
+print("Uses learned contextual representations.")
+print("Can use surrounding words and semantic context.")
+
+print("\nComparison:")
+print("CFG     -> Grammar-based ambiguity handling")
+print("PCFG    -> Probability-based ambiguity ranking")
+print("Neural  -> Context and data-driven interpretation")
+
+print("\nConclusion:")
+print("Neural parsing is generally more suitable for")
+print("real-world applications because it can use")
+print("rich contextual information.")
