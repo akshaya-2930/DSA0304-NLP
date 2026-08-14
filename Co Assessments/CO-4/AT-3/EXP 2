@@ -1,0 +1,26 @@
+print("TOP-DOWN PARSING vs EARLEY PARSING")
+print("----------------------------------")
+
+sentence = "Book a flight to Delhi"
+
+print("Input:", sentence)
+
+print("\nTop-Down Parsing:")
+print("1. Starts from the grammar start symbol.")
+print("2. Expands grammar rules from top to bottom.")
+print("3. May require backtracking.")
+print("4. Can be inefficient for ambiguous input.")
+
+print("\nEarley Parsing:")
+print("1. Uses chart parsing.")
+print("2. Stores intermediate parsing states.")
+print("3. Handles incomplete input.")
+print("4. Handles ambiguous sentences efficiently.")
+
+print("\nComparison:")
+print("Top-Down  -> Simple but may involve backtracking.")
+print("Earley    -> More flexible for dynamic input.")
+
+print("\nConclusion:")
+print("Earley parsing is more suitable for real-time")
+print("applications with incomplete or ambiguous input.")
