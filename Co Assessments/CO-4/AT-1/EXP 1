@@ -1,0 +1,25 @@
+queries = {
+    "Q1": ("Activate Roaming", "Activate Roaming"),
+    "Q2": ("Deactivate Caller Tune", "Activate Caller Tune"),
+    "Q3": ("Check Data Balance", "Query Data Balance"),
+    "Q4": ("Enable 5G Service", "Activate 5G Service")
+}
+
+print("SEMANTIC REPRESENTATION ANALYSIS")
+print("---------------------------------")
+
+for q, values in queries.items():
+    actual, predicted = values
+
+    print(q)
+    print("Actual   :", actual)
+    print("Predicted:", predicted)
+
+    if actual == predicted:
+        print("Status   : Correct")
+    else:
+        print("Status   : Semantic Error")
+
+    print()
+
+print("Conclusion: Q2 contains a semantic interpretation error.")
