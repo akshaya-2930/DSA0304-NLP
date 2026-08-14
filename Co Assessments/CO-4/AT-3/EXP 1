@@ -1,0 +1,26 @@
+print("CFG vs DEPENDENCY PARSING")
+print("------------------------")
+
+sentence = "The student reads a book."
+
+print("Sentence:", sentence)
+
+print("\nCFG Representation:")
+print("S")
+print("|-- NP -> The student")
+print("|-- VP")
+print("    |-- V -> reads")
+print("    |-- NP -> a book")
+
+print("\nDependency Representation:")
+print("reads -> student : subject")
+print("reads -> book    : object")
+print("book -> a         : determiner")
+
+print("\nComparison:")
+print("CFG focuses on hierarchical phrase structure.")
+print("Dependency parsing focuses on word-to-word relationships.")
+
+print("\nConclusion:")
+print("Dependency parsing is more effective for capturing")
+print("direct relationships between words.")E
