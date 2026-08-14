@@ -1,0 +1,21 @@
+sentences = [
+    ("Doctor", "prescribed", "medicine", "Agent"),
+    ("Patient", "reported", "headache", "Recipient"),
+    ("Nurse", "monitored", "patient", "Agent"),
+    ("Medicine", "reduced", "blood pressure", "Instrument")
+]
+
+print("SYNTAX-DRIVEN SEMANTIC ANALYSIS")
+print("--------------------------------")
+
+for subject, verb, obj, role in sentences:
+    print("Sentence :", subject, verb, obj)
+    print("Subject  :", subject)
+    print("Verb     :", verb)
+    print("Object   :", obj)
+    print("Role     :", role)
+    print()
+
+print("Conclusion:")
+print("Syntactic structure helps assign semantic roles.")
+print("Incorrect parsing can lead to incorrect meaning.")
