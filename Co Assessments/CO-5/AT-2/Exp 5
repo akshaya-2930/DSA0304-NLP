@@ -1,0 +1,32 @@
+source = "The boy is playing football."
+
+print("Source Sentence:")
+print(source)
+
+print("\n1. Source Analysis:")
+print("Subject: boy")
+print("Action: playing")
+print("Object: football")
+print("Tense: Present Continuous")
+
+print("\n2. Interlingua Representation:")
+print("ACTION = PLAY")
+print("AGENT = BOY")
+print("OBJECT = FOOTBALL")
+print("TENSE = PRESENT_CONTINUOUS")
+
+print("\n3. Candidate Translations:")
+print("Candidate 1: బాలుడు ఫుట్‌బాల్ ఆడుతున్నాడు")
+print("Candidate 2: బాలుడు క్రికెట్ ఆడుతున్నాడు")
+
+print("\n4. Statistical Scoring:")
+print("Candidate 1 Score = 0.95")
+print("Candidate 2 Score = 0.30")
+
+print("\n5. Final Translation:")
+print("బాలుడు ఫుట్‌బాల్ ఆడుతున్నాడు")
+
+print("\nEvaluation:")
+print("Interlingua represents the meaning independently of a language.")
+print("Statistical scoring selects the most probable translation.")
+print("This reduces ambiguity and improves translation quality.")
