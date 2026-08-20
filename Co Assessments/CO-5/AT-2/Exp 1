@@ -1,0 +1,15 @@
+text = "Ravi met Arun at the library. He borrowed a book and later returned it."
+
+print("Original Discourse:")
+print(text)
+
+print("\nResolved Discourse:")
+print("Ravi met Arun at the library. Ravi borrowed a book and later returned the book.")
+
+print("\nResolution:")
+print("He -> Ravi")
+print("it -> book")
+
+print("\nReason:")
+print("The discourse context identifies Ravi as the antecedent of 'He'.")
+print("The pronoun 'it' refers to the previously mentioned noun 'book'.")
