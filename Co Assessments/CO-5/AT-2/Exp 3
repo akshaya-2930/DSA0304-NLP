@@ -1,0 +1,21 @@
+conversation = [
+    ("User", "Can you book a train ticket for me?", "Request"),
+    ("Agent", "Sure, where would you like to travel?", "Question"),
+    ("User", "I want to go to Chennai.", "Inform"),
+    ("Agent", "Your ticket has been booked.", "Confirmation")
+]
+
+print("Dialogue Act Analysis:\n")
+
+for speaker, sentence, act in conversation:
+    print(speaker + ": " + sentence)
+    print("Dialogue Act:", act)
+    print()
+
+print("Dialogue Act Sequence:")
+print("Request -> Question -> Inform -> Confirmation")
+
+print("\nEvaluation:")
+print("The dialogue acts help the agent understand the user's intention.")
+print("The agent first receives a request, asks for information,")
+print("receives the destination, and finally confirms the booking.")
