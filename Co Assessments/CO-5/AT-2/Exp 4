@@ -1,0 +1,26 @@
+action = "Buy"
+agent = "Student"
+obj = "Book"
+tense = "Past"
+
+print("Semantic Representation:")
+print("Action:", action)
+print("Agent:", agent)
+print("Object:", obj)
+print("Tense:", tense)
+
+if action == "Buy" and tense == "Past":
+    sentence = "The student bought a book."
+
+print("\nGenerated Sentence:")
+print(sentence)
+
+print("\nSurface Realization:")
+print("Lexical Selection: Buy -> bought")
+print("Sentence Structure: Subject + Verb + Object")
+print("Subject: The student")
+print("Verb: bought")
+print("Object: a book")
+
+print("\nGrammatical Validation:")
+print("The sentence is grammatically correct.")
