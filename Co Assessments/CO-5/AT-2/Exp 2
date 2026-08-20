@@ -1,0 +1,29 @@
+sentences = [
+    "The roads were flooded after heavy rainfall.",
+    "Therefore, schools were closed for the day.",
+    "Students attended classes online."
+]
+
+print("Discourse:")
+for s in sentences:
+    print(s)
+
+print("\nDiscourse Relations:")
+print("Sentence 1 -> Sentence 2 : Cause-Effect")
+print("Sentence 2 -> Sentence 3 : Sequence / Result")
+
+print("\nDiscourse Structure:")
+print("Heavy rainfall")
+print("      |")
+print("      v")
+print("Roads were flooded")
+print("      |")
+print("      v")
+print("Schools were closed")
+print("      |")
+print("      v")
+print("Students attended online classes")
+
+print("\nCoherence:")
+print("The sentences are connected logically.")
+print("Flooding caused school closure, which resulted in online classes.")
