@@ -1,0 +1,70 @@
+from sklearn.feature_extraction.text import CountVectorizer
+from sklearn.naive_bayes import MultinomialNB
+from sklearn.metrics import accuracy_score, precision_score, recall_score, f1_score
+
+# Training data
+sentences = [
+    "I deposited money in the bank",
+    "The bank approved my loan",
+    "She opened a savings account at the bank",
+    "The children played near the river bank",
+    "He sat on the bank of the river",
+    "The fisherman stood near the bank"
+]
+
+labels = [
+    "FINANCIAL",
+    "FINANCIAL",
+    "FINANCIAL",
+    "RIVER",
+    "RIVER",
+    "RIVER"
+]
+
+# Convert text to features
+vectorizer = CountVectorizer()
+X = vectorizer.fit_transform(sentences)
+
+# Train model
+model = MultinomialNB()
+model.fit(X, labels)
+
+# Test data
+test_sentences = [
+    "The customer visited the bank",
+    "He deposited money in the bank",
+    "The children sat near the river bank",
+    "The fisherman walked along the bank"
+]
+
+actual = [
+    "FINANCIAL",
+    "FINANCIAL",
+    "RIVER",
+    "RIVER"
+]
+
+# Prediction
+X_test = vectorizer.transform(test_sentences)
+predicted = model.predict(X_test)
+
+# Evaluation
+print("Predicted:", predicted)
+
+print("Accuracy:",
+      accuracy_score(actual, predicted))
+
+print("Precision:",
+      precision_score(actual, predicted,
+                      average="weighted",
+                      zero_division=0))
+
+print("Recall:",
+      recall_score(actual, predicted,
+                   average="weighted",
+                   zero_division=0))
+
+print("F1 Score:",
+      f1_score(actual, predicted,
+               average="weighted",
+               zero_division=0))
