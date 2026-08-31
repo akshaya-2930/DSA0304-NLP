@@ -1,0 +1,41 @@
+from sklearn.feature_extraction.text import CountVectorizer
+from sklearn.naive_bayes import MultinomialNB
+
+# Training data
+sentences = [
+    "I deposited money in the bank",
+    "The bank approved my loan",
+    "She opened a savings account at the bank",
+    "The children played near the river bank",
+    "He sat on the bank of the river",
+    "The fisherman stood near the bank"
+]
+
+labels = [
+    "FINANCIAL",
+    "FINANCIAL",
+    "FINANCIAL",
+    "RIVER",
+    "RIVER",
+    "RIVER"
+]
+
+# Convert text into features
+vectorizer = CountVectorizer()
+X = vectorizer.fit_transform(sentences)
+
+# Train classifier
+model = MultinomialNB()
+model.fit(X, labels)
+
+# Test sentence
+test_sentence = "The fisherman walked along the bank"
+
+# Convert test sentence
+test_data = vectorizer.transform([test_sentence])
+
+# Predict sense
+prediction = model.predict(test_data)
+
+print("Sentence:", test_sentence)
+print("Predicted Sense:", prediction[0])
