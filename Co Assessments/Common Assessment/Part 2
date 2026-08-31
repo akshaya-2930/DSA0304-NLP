@@ -1,0 +1,42 @@
+import re
+
+sentence = "The customer deposited money in the bank."
+
+financial_words = [
+    "money", "customer", "deposited",
+    "savings", "account"
+]
+
+river_words = [
+    "river", "fisherman", "water",
+    "children", "sat", "walked"
+]
+
+words = re.findall(r"\b\w+\b", sentence.lower())
+
+financial_score = 0
+river_score = 0
+
+financial_features = []
+river_features = []
+
+for word in words:
+    if word in financial_words:
+        financial_score += 1
+        financial_features.append(word)
+
+    if word in river_words:
+        river_score += 1
+        river_features.append(word)
+
+if financial_score > river_score:
+    sense = "FINANCIAL"
+elif river_score > financial_score:
+    sense = "RIVER"
+else:
+    sense = "UNKNOWN"
+
+print("Sentence:", sentence)
+print("Financial Features:", financial_features)
+print("River Features:", river_features)
+print("Identified Sense:", sense)
