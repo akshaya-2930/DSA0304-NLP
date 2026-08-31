@@ -1,0 +1,20 @@
+import re
+
+sentence = "The customer deposited money in the bank."
+
+words = re.findall(r"\b\w+\b", sentence.lower())
+
+financial = ["money", "customer", "deposited", "savings", "account"]
+river = ["river", "children", "sat", "fisherman"]
+
+if any(word in financial for word in words):
+    sense = "FINANCIAL"
+
+elif any(word in river for word in words):
+    sense = "RIVER"
+
+else:
+    sense = "UNKNOWN"
+
+print("Sentence:", sentence)
+print("Sense of bank:", sense)
